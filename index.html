@@ -2,7 +2,7 @@
 <html lang="es" class="preload">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>XV Años de Naomi Fernanda</title>
   <link rel="stylesheet" href="css/styles.css"/>
 </head>
@@ -30,7 +30,7 @@
 
           <div class="hero-name">
             <h1>Naomi Fernanda</h1>
-            <button id="playAudio" class="play-pill">▶︎ Play</button>
+            <button id="playAudio" class="play-pill" aria-label="Reproducir música">▶︎ Play</button>
           </div>
         </div>
 
@@ -48,7 +48,7 @@
 
         <div class="thanks-block">
           <p class="thanks-lead">
-            “Gracias mamá y papá por su amor, apoyo incondicional y por acompañarme en cada paso hasta llegar a este día tan especial”
+            “Gracias mamá y papá por su amor, apoyo incondicional y por acompañarme en cada paso hasta llegar a este día tan especial.”
           </p>
 
           <div class="gold">Papás</div>
@@ -57,7 +57,7 @@
             <div class="name">Jesús Olivo</div>
           </div>
 
-          <p class="thanks-god"></p>
+          <p class="thanks-god">Con cariño, Familia Olivo Rodríguez</p>
         </div>
       </div>
     </section>
@@ -66,7 +66,8 @@
     <section class="sheet-page section date-section" id="p3">
       <div class="paper paper-texture">
         <h3 class="section-title date-title">Fecha Especial</h3>
-        <p class="date-quote">“Con alegria te invitamos a festejar a nuestra princesa Naomi Fernanda"
+        <p class="date-quote">“Con alegría te invitamos a festejar a nuestra princesa Naomi Fernanda”.</p>
+
         <div class="date-card">
           <span class="date-dayname">SÁBADO</span>
           <span class="date-day">22</span>
@@ -82,7 +83,13 @@
           <li>
             <div class="btn-row">
               <a class="pill" href="https://maps.app.goo.gl/BsEXuhL45swT3cYQA" target="_blank" rel="noopener">📍 Ver ubicación</a>
-              <a class="pill" href="tel:7774243428">📞 Confirmación 777 424 3428</a>
+              <!-- 🔗 WHATSAPP DIRECTO (MX +52) -->
+              <a class="pill"
+                 href="https://wa.me/527774243428?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Naomi%20Fernanda.%20Mi%20nombre%20es%3A"
+                 target="_blank" rel="noopener"
+                 aria-label="Enviar confirmación por WhatsApp">
+                💬 Confirmación (WhatsApp)
+              </a>
             </div>
           </li>
           <li><b>Obsequio:</b> Lluvia de sobres</li>
@@ -112,6 +119,7 @@
 
         <ul class="list itinerary-extra">
           <li><b>Código de vestimenta:</b> Formal</li>
+          <li><b>Pases de control:</b> Número de personas por confirmar</li>
         </ul>
       </div>
     </section>
@@ -147,6 +155,13 @@
     <source src="audio/youtube_Ariana Grande - Moonlight.mp4" type="audio/mp4"/>
   </audio>
 
+  <!-- 💬 Botón flotante de WhatsApp (opcional) -->
+  <a class="fab-whatsapp"
+     href="https://wa.me/527774243428?text=Hola%2C%20confirmo%20mi%20asistencia%20a%20los%20XV%20de%20Naomi%20Fernanda.%20Mi%20nombre%20es%3A"
+     target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <span>WhatsApp</span>
+  </a>
+
   <!-- 🌸✨ Efectos -->
   <script src="js/effects.js"></script>
   <script>
@@ -163,30 +178,18 @@
       document.documentElement.classList.remove('preload');
       document.documentElement.classList.add('loaded');
     });
-  </script>
 
-  <!-- ⚡ AÑADIDO: Activar/inactivar clase "in-view" en cada página para transiciones -->
-  <script>
+    // Transiciones entre páginas (IntersectionObserver)
     (function(){
       const scroller = document.querySelector('.pages');
       const pages = document.querySelectorAll('.sheet-page');
-
-      // Marca la primera como visible de inicio
       pages[0]?.classList.add('in-view');
-
       const io = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            entry.target.classList.add('in-view');
-          }else{
-            entry.target.classList.remove('in-view');
-          }
+          if(entry.isIntersecting) entry.target.classList.add('in-view');
+          else entry.target.classList.remove('in-view');
         });
-      },{
-        root: scroller,
-        threshold: 0.6
-      });
-
+      },{ root: scroller, threshold: 0.6 });
       pages.forEach(p => io.observe(p));
     })();
   </script>
